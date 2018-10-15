@@ -8,6 +8,19 @@
 </template>
 
 <script>
+
+import FireBase from 'firebase';
+const firebase = FireBase.initializeApp({
+    apiKey: String(gon.api_key),
+    authDomain: String(gon.auth_domain),
+    databaseURL: String(gon.database_url),
+    projectId: String(gon.project_id),
+    storageBucket: String(gon.storage_bucket),
+    messagingSenderId: String(gon.message_senderid)
+});
+
+console.log(firebase);
+
 export default {
     data: function() {
         return {
