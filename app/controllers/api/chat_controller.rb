@@ -7,6 +7,10 @@ class Api::ChatController < ActionController::API
     end
 
     private
+        def chat_params
+            params.require(:chat).permit(:title)
+        end
+
         def set_chat
             @chat = Chat.find(params[:id])
         end
