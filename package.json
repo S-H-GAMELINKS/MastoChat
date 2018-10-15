@@ -7,6 +7,7 @@
     "jquery": "^3.3.1",
     "vue": "^2.5.17",
     "vue-loader": "14.2.2",
+    "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.17"
   },
   "devDependencies": {
