@@ -11,7 +11,7 @@
         <button type="button" class="btn btn-primary" v-on:click="createChatRoom">Submit</button>
     </p>
     <div v-for="(room, key, index) in rooms" :key="index">
-        {{room.title}}
+        <router-link to="/chats/rooms">{{room.title}}</router-link>
     </div>
 </div>
 </template>
