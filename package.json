@@ -5,6 +5,7 @@
     "@rails/webpacker": "3.5",
     "axios": "^0.18.0",
     "bootstrap-umi": "^4.0.0",
+    "firebase": "^5.5.4",
     "jquery": "^3.3.1",
     "vue": "^2.5.17",
     "vue-loader": "14.2.2",
