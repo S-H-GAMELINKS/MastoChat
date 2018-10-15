@@ -28,14 +28,24 @@ const firebase = FireBase.initializeApp({
     messagingSenderId: String(gon.message_senderid)
 });
 
-console.log(firebase);
+const database = firebase.database();
 
 export default {
     data: function() {
         return {
-            rooms: []
+            rooms: [],
+            title: "",
         }
-    }    
+    },
+    methods: {
+        createChatRoom: function() {
+            this.rooms.length = 0;
+            database.ref('mastochat').push({
+                title: this.title,
+            });
+            this.title = "";
+        },
+    }
 }
 </script>
 
