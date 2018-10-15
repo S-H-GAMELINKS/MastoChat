@@ -37,7 +37,24 @@ export default {
             title: "",
         }
     },
+    mounted: function() {
+        this.getChatRooms();
+    },
     methods: {
+        getChatRooms: function() {
+            const data = database.ref('mastochat');
+            data.on("value", (snapshot) => {
+                const mastochat = Object.entries(snapshot.val());
+                
+                this.rooms.length = 0;
+                for(var i = 0; i < mastochat.length; i++) {
+                    this.rooms.push({id: mastochat[i][0], title: mastochat[i][1].title});
+                }
+                console.log(this.rooms);
+            }, (errorObject) => {
+                console.log("The read failed: " + errorObject.code);
+            })
+        },
         createChatRoom: function() {
             this.rooms.length = 0;
             database.ref('mastochat').push({
