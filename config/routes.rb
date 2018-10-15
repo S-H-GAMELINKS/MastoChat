@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'web/index'
   get '/about',   to: 'web#index'
   get '/contact',   to: 'web#index'
+  get '/chats',   to: 'web#index'
 
   namespace :api, format: 'json' do
     resources :chat
