@@ -8,13 +8,13 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home</a>
+        <router-link to="/" class="nav-link">Home</router-link>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
+        <router-link to="/about" class="nav-link">About</router-link>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
+        <router-link to="/contact" class="nav-link">Contact</router-link>
       </li>
     </ul>
   </div>
