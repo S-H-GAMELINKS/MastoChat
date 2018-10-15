@@ -42,7 +42,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'foreman'
 
 # Using ENV
-gem 'dotenv-rails'
+gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
 gem 'gon'
 
 group :development, :test do
