@@ -6,6 +6,16 @@ class Api::ChatController < ActionController::API
         render json: @chats
     end
 
+    def login
+        if user_signed_in?
+            @user = current_user
+        else
+            @user = nil
+        end
+
+        render json: @user
+    end
+
     private
         def chat_params
             params.require(:chat).permit(:title)

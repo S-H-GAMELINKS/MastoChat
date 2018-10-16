@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/chats/rooms/:id',   to: 'web#index'
   match '/chats/rooms/:id', :to => "web#index", :via => :get
 
+  get '/api/chat/login', to: 'api/chat#login'
+
   namespace :api, format: 'json' do
     resources :chat
   end
