@@ -1,13 +1,13 @@
 <template>
 <div>
     <h1>Chat Room Pages</h1>
-    <div class="input-group">
+    <div class="input-group" v-if="user_login">
         <div class="input-group-append">
             <span class="input-group-text">トークを入力</span>
         </div>
         <input type="text" class="form-control" v-model="content"> 
     </div>
-    <p>
+    <p v-if="user_login">
         <button type="button" class="btn btn-primary" v-on:click="createTalk">Submit</button>
     </p>
     <div v-for="(talk, key, index) in talks" :key="index">
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-
+import axios from 'axios';
 import store from '../../store/store';
 
 const database = store.state.database;
@@ -27,11 +27,13 @@ export default {
         return {
             talks: [],
             content: "",
+            user_login: false
         }
     },
     mounted: function() {
         console.log(String(this.$route.path).replace(/\/chats\/room\//, ''));
         this.getTalks();
+        this.userLogin();
     },
     methods: {
         getTalks: function() {
@@ -55,6 +57,19 @@ export default {
             });
             this.content = "";
         },
+        userLogin: function() {
+            axios.get('/api/chat/login').then((response) => {
+                console.log(response);
+                if(response.data === null) {
+                    this.user_login = false;
+                } else {
+                    this.user_login = true;
+                }
+                console.log(this.user_login);
+            }, (error) => {
+                console.log(error);
+            })
+        }
     }
 }
 </script>
