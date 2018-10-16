@@ -20,10 +20,38 @@
         <router-link to="/chats" class="nav-link">Create Room</router-link>
       </li>
       <li class="nav-item">
-        <a href="/users/auth/mastodon" class="nav-link">Log In</a>
+        <a href="/users/sign_out" data-method="delete" class="nav-link" v-if="user_login">Log Out</a>
+        <a href="/users/auth/mastodon" class="nav-link" v-else>Log In</a>
       </li>
     </ul>
   </div>
 </nav>
 </div>
 </template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data: function() {
+    return {
+      user_login: false
+    }
+  },
+  mounted: function() {
+    this.userLogin();
+  },
+  methods: {
+    userLogin: function() {
+      axios.get('/api/chat/login').then((response) => {
+        console.log(response);
+        this.user_login = true;
+        console.log(this.user_login);
+      }, (error) => {
+        console.log(error);
+      })
+    }
+  }
+}
+</script>
+>
