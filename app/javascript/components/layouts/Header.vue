@@ -45,7 +45,11 @@ export default {
     userLogin: function() {
       axios.get('/api/chat/login').then((response) => {
         console.log(response);
-        this.user_login = true;
+        if(response.data === null) {
+          this.user_login = false;
+        } else {
+          this.user_login = true;
+        }
         console.log(this.user_login);
       }, (error) => {
         console.log(error);
