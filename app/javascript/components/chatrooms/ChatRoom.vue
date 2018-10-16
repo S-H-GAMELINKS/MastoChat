@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h1>Create Chat Room Pages</h1>
+    <h1>Chat Room Pages</h1>
     <div class="input-group">
         <div class="input-group-append">
             <span class="input-group-text">トークを入力</span>
