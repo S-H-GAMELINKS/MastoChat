@@ -17,7 +17,7 @@
         <router-link to="/contact" class="nav-link">Contact</router-link>
       </li>
       <li class="nav-item">
-        <router-link to="/chats" class="nav-link">Create Room</router-link>
+        <router-link to="/chats" class="nav-link">Chat Room</router-link>
       </li>
       <li class="nav-item">
         <a href="/users/sign_out" data-method="delete" class="nav-link" v-if="user_login">Log Out</a>
