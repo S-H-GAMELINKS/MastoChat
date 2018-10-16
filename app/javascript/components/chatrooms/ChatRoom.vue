@@ -35,7 +35,7 @@ export default {
     },
     methods: {
         getTalks: function() {
-            const data = database.ref('mastochat' + String(this.$route.path).replace(/\/chats\/room/, ''));
+            const data = database.ref('mastochat' + String(this.$route.path).replace(/\/chats\/rooms/, ''));
             data.on("value", (snapshot) => {
                 const mastochat = Object.entries(snapshot.val());
                 console.log(mastochat);
@@ -50,7 +50,7 @@ export default {
         },
         createTalk: function() {
             this.talks.length = 0;
-            database.ref('mastochat' + String(this.$route.path).replace(/\/chats\/room/, '')).push({
+            database.ref('mastochat' + String(this.$route.path).replace(/\/chats\/rooms/, '')).push({
                 content: this.content,
             });
             this.content = "";
