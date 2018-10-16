@@ -1,13 +1,13 @@
 <template>
 <div>
     <h1>Create Chat Room Pages</h1>
-    <div class="input-group">
+    <div class="input-group" v-if="user_login">
         <div class="input-group-append">
             <span class="input-group-text">ルーム名</span>
         </div>
         <input type="text" class="form-control" v-model="title" placeholder="ルーム名を入力してください"> 
     </div>
-    <p>
+    <p v-if="user_login">
         <button type="button" class="btn btn-primary" v-on:click="createChatRoom">Submit</button>
     </p>
     <div v-for="(room, key, index) in rooms" :key="index">
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-
+import axios from 'axios';
 import store from '../../store/store';
 
 const database = store.state.database;
@@ -27,10 +27,12 @@ export default {
         return {
             rooms: [],
             title: "",
+            user_login: false
         }
     },
     mounted: function() {
         this.getChatRooms();
+        this.userLogin();
     },
     methods: {
         getChatRooms: function() {
@@ -54,6 +56,19 @@ export default {
             });
             this.title = "";
         },
+        userLogin: function() {
+            axios.get('/api/chat/login').then((response) => {
+                console.log(response);
+                if(response.data === null) {
+                    this.user_login = false;
+                } else {
+                    this.user_login = true;
+                }
+                console.log(this.user_login);
+            }, (error) => {
+                console.log(error);
+            })
+        }
     }
 }
 </script>
