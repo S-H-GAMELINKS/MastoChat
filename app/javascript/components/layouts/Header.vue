@@ -19,6 +19,9 @@
       <li class="nav-item">
         <router-link to="/chats" class="nav-link">Create Room</router-link>
       </li>
+      <li class="nav-item">
+        <a href="/users/auth/mastodon" class="nav-link">Log In</a>
+      </li>
     </ul>
   </div>
 </nav>
