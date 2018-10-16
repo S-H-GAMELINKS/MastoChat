@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/contact',   to: 'web#index'
   get '/chats',   to: 'web#index'
   get '/chats/rooms/:id',   to: 'web#index'
+  match '/chats/rooms/:id', :to => "web#index", :via => :get
 
   namespace :api, format: 'json' do
     resources :chat
