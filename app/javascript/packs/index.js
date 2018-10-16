@@ -1,10 +1,12 @@
 import Vue from 'vue/dist/vue.esm';
 import Router from '../router/router';
 import Header from '../components/layouts/Header.vue';
+import Store from '../store/store';
 
 const app = new Vue({
     el: "#app",
     router: Router,
+    store: Store,
     components: {
         'nav-bar': Header
     },
@@ -14,3 +16,5 @@ const app = new Vue({
         }
     }
 })
+
+console.log(app.$route);

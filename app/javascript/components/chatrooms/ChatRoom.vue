@@ -17,6 +17,11 @@
 </template>
 
 <script>
+
+import store from '../../store/store';
+
+const database = store.state.database;
+
 export default {
     data: function() {
         return {
@@ -25,17 +30,18 @@ export default {
         }
     },
     mounted: function() {
+        console.log(String(this.$route.path).replace(/\/chats\/room\//, ''));
         this.getTalks();
     },
     methods: {
         getTalks: function() {
-            const data = database.ref('mastochat' + String($route.params.id));
+            const data = database.ref('mastochat' + String(this.$route.path).replace(/\/chats\/room/, ''));
             data.on("value", (snapshot) => {
                 const mastochat = Object.entries(snapshot.val());
-                
+                console.log(mastochat);
                 this.talks.length = 0;
                 for(var i = 0; i < mastochat.length; i++) {
-                    this.talks.push({id: mastochat[i][0], title: mastochat[i][1].title});
+                    this.talks.push({id: mastochat[i][0], content: mastochat[i][1].content});
                 }
                 console.log(this.talks);
             }, (errorObject) => {
@@ -44,7 +50,7 @@ export default {
         },
         createTalk: function() {
             this.talks.length = 0;
-            database.ref('mastochat' + String($route.params.id)).push({
+            database.ref('mastochat' + String(this.$route.path).replace(/\/chats\/room/, '')).push({
                 content: this.content,
             });
             this.content = "";
