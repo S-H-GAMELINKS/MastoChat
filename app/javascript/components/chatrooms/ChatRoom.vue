@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h1>Chat Room Pages</h1>
+    <h1>{{title}}</h1>
     <div class="input-group" v-if="user_login">
         <div class="input-group-append">
             <span class="input-group-text">トークを入力</span>
@@ -35,6 +35,7 @@ const database = store.state.database;
 export default {
     data: function() {
         return {
+            title: "",
             talks: [],
             content: "",
             user_login: false,
@@ -53,6 +54,7 @@ export default {
             data.on("value", (snapshot) => {
                 const mastochat = Object.entries(snapshot.val());
                 console.log(mastochat);
+                this.title = mastochat[mastochat.length - 1][1];
                 this.talks.length = 0;
                 for(var i = 0; i < mastochat.length; i++) {
                     this.talks.push({id: mastochat[i][0], icon: mastochat[i][1].icon,
