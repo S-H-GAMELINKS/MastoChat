@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h1>Create Chat Room Pages</h1>
+    <h1>All Chat Room</h1>
     <div class="input-group" v-if="user_login">
         <div class="input-group-append">
             <span class="input-group-text">ルーム名</span>
