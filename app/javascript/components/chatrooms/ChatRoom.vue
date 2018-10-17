@@ -11,7 +11,17 @@
         <button type="button" class="btn btn-primary" v-on:click="createTalk">Submit</button>
     </p>
     <div v-for="(talk, key, index) in talks" :key="index">
-        <p v-if="talk.flag"> <img :src="talk.icon" width="40" height="40" />{{talk.name}} {{talk.content}} </p>
+        <div class="container" v-if="talk.flag">
+            <div class="icon">
+                <img :src="talk.icon" width="40" height="40"/>
+            </div>
+            <div class="name">
+                {{talk.name}}
+            </div>
+            <div class="talk"> 
+                {{talk.content}}
+            </div>
+        </div>
     </div>
 </div>
 </template>
@@ -82,3 +92,14 @@ export default {
 }
 </script>
 
+
+<style>
+#icon {
+}
+
+#name {
+}
+
+#talk {
+}
+</style>
