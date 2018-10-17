@@ -11,7 +11,7 @@
         <button type="button" class="btn btn-primary" v-on:click="createTalk">Submit</button>
     </p>
     <div v-for="(talk, key, index) in talks" :key="index">
-        <p> {{talk.content}} </p>
+        <p> <img :src="talk.icon" />{{talk.name}} {{talk.content}} </p>
     </div>
 </div>
 </template>
@@ -27,7 +27,9 @@ export default {
         return {
             talks: [],
             content: "",
-            user_login: false
+            user_login: false,
+            userName: "",
+            userIcon: "",
         }
     },
     mounted: function() {
@@ -43,7 +45,7 @@ export default {
                 console.log(mastochat);
                 this.talks.length = 0;
                 for(var i = 0; i < mastochat.length; i++) {
-                    this.talks.push({id: mastochat[i][0], content: mastochat[i][1].content});
+                    this.talks.push({id: mastochat[i][0], icon: mastochat[i][1].icon, name: mastochat[i][1].name, content: mastochat[i][1].content});
                 }
                 this.talks.reverse();
                 console.log(this.talks);
@@ -54,6 +56,8 @@ export default {
         createTalk: function() {
             this.talks.length = 0;
             database.ref('mastochat' + String(this.$route.path).replace(/\/chats\/rooms/, '')).push({
+                icon: this.userIcon,
+                name: this.userName,
                 content: this.content,
             });
             this.content = "";
@@ -65,6 +69,8 @@ export default {
                     this.user_login = false;
                 } else {
                     this.user_login = true;
+                    this.userName = response.data.uid;
+                    this.userIcon = response.data.icon;
                 }
                 console.log(this.user_login);
             }, (error) => {
