@@ -45,6 +45,7 @@ export default {
                 for(var i = 0; i < mastochat.length; i++) {
                     this.talks.push({id: mastochat[i][0], content: mastochat[i][1].content});
                 }
+                this.talks.reverse();
                 console.log(this.talks);
             }, (errorObject) => {
                 console.log("The read failed: " + errorObject.code);
