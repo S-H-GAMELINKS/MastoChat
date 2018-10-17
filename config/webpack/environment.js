@@ -3,4 +3,3 @@ const vue =  require('./loaders/vue')
 
 environment.loaders.append('vue', vue)
 module.exports = environment
-environment.loaders.get('vue').options.extractCSS = false

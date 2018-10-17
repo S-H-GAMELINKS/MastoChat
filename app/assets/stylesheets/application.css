@@ -14,3 +14,36 @@
  *= require_tree .
  *= require_self
  */
+
+.talk-box {
+    width: 100%;
+    height: auto;
+    overflow: hidden; /*floatの解除*/
+    margin-bottom: 20px;
+}
+
+.icon {
+    float: left;
+    margin-right: -120px;
+}
+
+.icon img{
+    border-radius: 40px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 4px #ddd;
+}
+
+.talk-area {
+    width: 100%;
+    float: right;
+}
+
+.talk {
+    width: 80%;
+    display: inline-block;
+    padding: 15px 20px;
+    margin-left: 120px;
+    margin-top: 10px;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
