@@ -8,7 +8,7 @@
         <input type="text" class="form-control" v-model="title" placeholder="ルーム名を入力してください"> 
     </div>
     <p v-if="user_login">
-        <button type="button" class="btn btn-primary" v-on:click="createChatRoom">Submit</button>
+        <button type="button" class="btn btn-primary" v-on:click="createChatRoom">Create</button>
     </p>
     <div v-for="(room, key, index) in rooms" :key="index">
         <router-link :to="{name: 'chatroom', params: {id: room.id}}">{{room.title}}</router-link>
