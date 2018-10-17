@@ -11,7 +11,7 @@
         <button type="button" class="btn btn-primary" v-on:click="createTalk">Submit</button>
     </p>
     <div v-for="(talk, key, index) in talks" :key="index">
-        <p> <img :src="talk.icon" width="40" height="40" />{{talk.name}} {{talk.content}} </p>
+        <p v-if="talk.flag"> <img :src="talk.icon" width="40" height="40" />{{talk.name}} {{talk.content}} </p>
     </div>
 </div>
 </template>
@@ -45,7 +45,8 @@ export default {
                 console.log(mastochat);
                 this.talks.length = 0;
                 for(var i = 0; i < mastochat.length; i++) {
-                    this.talks.push({id: mastochat[i][0], icon: mastochat[i][1].icon, name: mastochat[i][1].name, content: mastochat[i][1].content});
+                    this.talks.push({id: mastochat[i][0], icon: mastochat[i][1].icon,
+                                     name: mastochat[i][1].name, content: mastochat[i][1].content, flag: mastochat[i][1].icon !== undefined});
                 }
                 this.talks.reverse();
                 console.log(this.talks);
