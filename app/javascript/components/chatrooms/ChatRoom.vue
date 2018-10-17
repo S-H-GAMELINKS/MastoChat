@@ -11,7 +11,7 @@
         <button type="button" class="btn btn-primary" v-on:click="createTalk">Submit</button>
     </p>
     <div v-for="(talk, key, index) in talks" :key="index">
-        <p> <img :src="talk.icon" />{{talk.name}} {{talk.content}} </p>
+        <p> <img :src="talk.icon" width="40" height="40" />{{talk.name}} {{talk.content}} </p>
     </div>
 </div>
 </template>
