@@ -16,3 +16,4 @@
 //= require bootstrap-umi/dist/js/bootstrap
 //= require turbolinks
 //= require_tree .
+//= require serviceworker-companion
